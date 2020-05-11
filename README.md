@@ -11,15 +11,16 @@ delete /placeholders/:id #delete
 
 users model will have
     username
-    securepassword 
+    password_digest 
     email 
 has secure password
-has many restaurant
+has many games
 
 restaurant belong to user
 has title 
-has address
-has category(cusine)
+has genre
+has platform
+ 
 
 
 
