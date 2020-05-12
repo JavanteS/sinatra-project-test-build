@@ -4,22 +4,15 @@
 
    <div class="content">
     <h2>Welcome to Game Tracker</h2>
-
-    <p>Where you can keep and track all your favorite games</p>
-    <p><a href="/signup">Sign Up</a></p>
+    <br>
+    <h3>Where you can keep and track all your favorite games</h3>
+    
     </div>
 
-
-   
-
     <div class="sidebar">
-      <h3>Environment</h3>
-      <ul>
-        <li><b>Ruby:</b> <%= RUBY_VERSION %></li>
-        <li><b>Environment:</b> <%= ENV["RACK_ENV"] %></li>
-        <li><b>Server:</b> <%= @env["SERVER_SOFTWARE"] %></li>
-        <li><b>Port:</b> <%= @env["SERVER_PORT"] %></li>
-      </ul>
+     <p><a href="/signup"><button>Sign Up</button></a></p> 
+     <p>or</p>
+     <p><a href="/login"><button>Log In</button></a></p>
     </div>
 
   </div>

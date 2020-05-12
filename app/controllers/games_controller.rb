@@ -7,6 +7,8 @@ class GamesController < ApplicationController
 
 
       get "/games" do 
+        #binding.pry
+        @games = Game.all 
         erb :"/games/index"
       end 
 
