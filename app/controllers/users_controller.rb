@@ -8,6 +8,9 @@ class UsersController < ApplicationController
       
 
      get "/signup" do
+      if logged_in?
+        redirect "/games"
+      end 
 
       erb :'/users/signup'
       
@@ -22,6 +25,35 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/games"
      end 
+
+     get "/login" do 
+      if logged_in?
+        redirect "/games"
+      else
+        erb :"/sessions/login"
+      end
+      
+     end 
+
+     post "/login" do
+      user = User.find_by(username: params[:username])
+
+		    if user && user.authenticate(params[:password])
+			    session[:user_id] = user.id
+              redirect "/games"
+		    else
+			      redirect "/login"
+		    end 
+
+     end
+     
+     get "/logout"
+        if logged_in?
+          session.clear 
+          redirect "/login"
+        else
+         redirect "/"
+        end 
 
      helpers do
       def logged_in?
