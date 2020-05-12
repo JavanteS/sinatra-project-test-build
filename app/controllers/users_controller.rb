@@ -8,12 +8,19 @@ class UsersController < ApplicationController
       
 
      get "/signup" do
-            
+
       erb :'/users/signup'
       
      end 
 
-     post "/signup" do 
+     post "/signup" do
+      #binding.pry
+      if params[:username].blank? || params[:email].blank? || params[:password].blank?
+        redirect to "/signup"
+      end 
+      user =User.create(username: params[:username], email: params[:email], password:  params[:password])
+      session[:user_id] = @user.id
+      redirect "/games"
      end 
 
      helpers do

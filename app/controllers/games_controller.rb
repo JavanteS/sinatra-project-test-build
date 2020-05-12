@@ -13,6 +13,9 @@ class GamesController < ApplicationController
       end 
 
       get "/games/new" do 
+        
+
+        
       end 
 
       post "/games" do 
