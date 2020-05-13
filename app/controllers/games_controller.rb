@@ -51,7 +51,21 @@ class GamesController < ApplicationController
         end 
       end 
 
-      patch "/games/:id" do 
+      patch "/games/:id" do
+        if logged_in?
+          @game = current_user.games.find_by_id(params[:id])
+          if @game
+            if @game.update(title: params[:title], genre: params[:genre], platform: params[:platform])
+            redirect "/games/#{@game.id}"
+            else
+            redirect "/games/#{@game.id}/edit"
+            end
+          else 
+            redirect "/games"
+          end
+        else
+          redirect "/login"
+        end   
       end
 
       get "/games/:id" do
