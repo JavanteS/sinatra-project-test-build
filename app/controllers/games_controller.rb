@@ -54,7 +54,17 @@ class GamesController < ApplicationController
       patch "/games/:id" do 
       end
 
-      get "/games/:id" do 
+      get "/games/:id" do
+        if logged_in?
+          @game = current_user.games.find_by_id(params[:id])
+          if @game 
+            erb :'/games/show'
+          else
+            redirect "/games"
+          end
+        else
+          redirect "/login"
+        end 
       end
       
       delete "/games/:id/delete" do 
