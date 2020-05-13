@@ -81,7 +81,16 @@ class GamesController < ApplicationController
         end 
       end
       
-      delete "/games/:id/delete" do 
+      delete "/games/:id" do 
+        if logged_in?
+          @game = current_user.games.find_by_id(params[:id])
+          if @game 
+            @game.delete
+            redirect "/games"
+          end 
+        else
+          redirect "/login"
+        end    
       end 
 
       helpers do

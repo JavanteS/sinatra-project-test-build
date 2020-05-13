@@ -6,6 +6,10 @@
 
 <a href="/games/<%=@game.id%>/edit">Edit</a>
 
+<form action="/tweets/<%= @game.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Game">
+</form>
 
 
 <a href="/games">Home</a>
