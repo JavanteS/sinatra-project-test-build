@@ -13,7 +13,8 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: rgba(42, 126, 129, 0.918);
+    background-color: rgba(13, 185, 190, 0.918);
+    
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
@@ -61,7 +62,7 @@
   }
 
   .sidebar {
-    background: rgb(248, 245, 245);
+    background: #eee;
     border: 1px solid #ccc;
     float: right;
     padding: 2.08333333333%; /* 5px / 240px */
