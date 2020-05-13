@@ -52,6 +52,8 @@
     margin-bottom: 18px;
   }
 
+ 
+
   .main {
     overflow: hidden;
   }
@@ -91,6 +93,8 @@
     box-shadow: none;
     width: auto;
   }
+
+  
 
   .content, .sidebar {
     float: none;
