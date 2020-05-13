@@ -22,8 +22,8 @@ class UsersController < ApplicationController
         redirect to "/signup"
       end 
       user =User.create(username: params[:username], email: params[:email], password:  params[:password])
-      session[:user_id] = @user.id
-      redirect "/games"
+      #session[:user_id] = @user.id
+      redirect "/login"
      end 
 
      get "/login" do 
@@ -47,13 +47,14 @@ class UsersController < ApplicationController
 
      end
      
-     get "/logout"
+     get "/logout" do 
         if logged_in?
           session.clear 
           redirect "/login"
         else
          redirect "/"
         end 
+      end 
 
      helpers do
       def logged_in?
@@ -61,7 +62,7 @@ class UsersController < ApplicationController
       end
   
       def current_user
-        User.find(session[:user_id])
+        @user ||= User.find(session[:user_id]) if logged_in?
       end
     end
 

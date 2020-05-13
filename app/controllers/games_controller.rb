@@ -8,13 +8,20 @@ class GamesController < ApplicationController
 
       get "/games" do 
         #binding.pry
-        @games = Game.all 
+        if logged_in?
+        @games = current_user.games
         erb :"/games/index"
+        else 
+          redirect "/login"
+        end
       end 
 
-      get "/games/new" do 
-        
-
+      get "/games/new" do
+        if logged_in?
+        erb :"games/new" 
+        else 
+          redirect "/login"
+        end 
         
       end 
 
@@ -39,7 +46,7 @@ class GamesController < ApplicationController
         end
     
         def current_user
-          User.find(session[:user_id])
+          @user ||= User.find(session[:user_id]) if logged_in?
         end
       end
 
