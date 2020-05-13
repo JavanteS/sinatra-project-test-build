@@ -1,5 +1,11 @@
 <h1>Edit your Game's content</h1>
 
+<h3><%=@game.title%></h3>
+
+<h3><%=@game.genre%></h3>
+
+<h3><%=@game.platform%></h3>
+
 <form method="POST" action="/games/<%= @game.id %>">
  <input id="hidden" type="hidden" name="_method" value="patch">
   
@@ -11,5 +17,5 @@
 
   <label for="platform">Platform:</label>
   <input type="text" name="platform">
-  <input type="submit" value="submit">
+  <input type="submit" value="Edit">
 </form>
