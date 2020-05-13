@@ -25,16 +25,36 @@ class GamesController < ApplicationController
         
       end 
 
-      post "/games" do 
-      end 
+      post "/games" do
+        if logged_in? 
+        @game = current_user.games.build(params)
+          if @game.save 
+            redirect "/games"
+          else 
+            redirect "/games/new"
+          end 
+        else 
+        redirect "/login"
+        end 
+      end  
 
-      get "/games/:id" do 
-      end 
-
-      get "/games/:id/edit" do 
+      get "/games/:id/edit" do
+        if logged_in?
+          @game = current_user.games.find_by_id(params[:id])
+          if @game 
+            erb :"games/edit"
+          else
+            redirect "/games"
+          end
+        else
+          redirect "/login"
+        end 
       end 
 
       patch "/games/:id" do 
+      end
+
+      get "/games/:id" do 
       end
       
       delete "/games/:id/delete" do 
