@@ -30,6 +30,7 @@ class UsersController < ApplicationController
       if logged_in?
         redirect "/games"
       else
+        #flash[:error] = "You are not logged in."
         erb :"/sessions/login"
       end
       
