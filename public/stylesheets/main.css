@@ -62,6 +62,12 @@
     cursor: pointer;
     text-align: center;
   }
+  
+  .button {
+    background-color: Transparent;
+    border: none;
+
+  }
  
 
   .main {
