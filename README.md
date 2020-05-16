@@ -7,20 +7,35 @@ Getting Started
 Prerequisites
 
 gem install 'sinatra'
-gem install 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
-gem install 'sinatra-activerecord', :require => 'sinatra/activerecord'
+
+gem install 'activerecord'
+
+gem install 'sinatra-activerecord'
+
 gem install 'rake'
+
 gem install 'require_all'
-gem install 'sqlite3', '~> 1.3.6'
+
+gem install 'sqlite3'
+
 gem install 'thin'
+
 gem install 'shotgun'
+
 gem install 'pry'
+
 gem install 'bcrypt'
+
 gem install 'tux'
+
 gem install 'faker'
+
 gem install 'rspec'
+
 gem install 'capybara'
+
 gem install 'rack-test'
+
 gem install 'database_cleaner'
 
 Usage
