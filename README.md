@@ -53,6 +53,10 @@ Contributing
 License
 
  	This project is licensed under the MIT License – see the LICENSE file for details.
+	
+Acknowledgments 
+	10Gpixels-Aether Sky Isles (Welcome page picture)
+	DigitalSynposis- background color 
 
 
  
