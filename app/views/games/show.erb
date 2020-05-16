@@ -1,16 +1,16 @@
-<h3>Title <%=@game.title%></h3>
-
-<h3>Genre: <%=@game.genre%></h3>
-
-<h3>Platform: <%=@game.platform%></h3>
-
-<a href="/games/<%=@game.id%>/edit"><button>Edit</button></a>
+<h4>Title: <%=@game.title%></h4>
+<br>
+<h4>Genre: <%=@game.genre%></h4>
+<br>
+<h4>Platform: <%=@game.platform%></h4>
+<br>
+<a href="/games/<%=@game.id%>/edit"><button class="button">Edit</button></a>
 
 <form action="/games/<%= @game.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">
 </form>
-<a href="/games"><button>Home</button></a>
+<a href="/games"><button class="button">Home</button></a>
 
 
 
