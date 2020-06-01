@@ -7,22 +7,19 @@ class GamesController < ApplicationController
 
 
       get "/games" do 
-        #binding.pry
-        if logged_in?
+        redirect_if_not_logged_in
+        
         @games = current_user.games
         erb :"/games/index"
-        else 
-          redirect "/login"
-        end
+
       end 
 
       get "/games/new" do
-        if logged_in?
+
+        redirect_if_not_logged_in
+      
         erb :"games/new" 
-        else 
-          redirect "/login"
-        end 
-        
+
       end 
 
       post "/games" do
@@ -34,13 +31,14 @@ class GamesController < ApplicationController
             redirect "/games/new"
           end 
         else 
-        redirect "/login"
+         redirect "/login"
         end 
       end  
 
       get "/games/:id/edit" do
         if logged_in?
           @game = current_user.games.find_by_id(params[:id])
+          #end 
           if @game 
             erb :"games/edit"
           else
@@ -83,7 +81,7 @@ class GamesController < ApplicationController
       
       delete "/games/:id" do 
         if logged_in?
-          @game = current_user.games.find_by_id(params[:id])
+          set_game
           if @game 
             @game.delete
             redirect "/games"
@@ -92,21 +90,9 @@ class GamesController < ApplicationController
           redirect "/login"
         end    
       end 
-
-      helpers do
-        def logged_in?
-          !!session[:user_id]
-        end
-    
-        def current_user
-          @user ||= User.find(session[:user_id]) if logged_in?
-        end
-      end
-
-
-
-
-
-
-
+      
+    private
+    def set_game
+      @game = current_user.games.find_by_id(params[:id])
+    end
 end 
