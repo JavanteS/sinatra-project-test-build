@@ -13,16 +13,9 @@ class GamesController < ApplicationController
       end 
 
       post "/games" do
-        if logged_in? 
+        redirect_if_not_logged_in
         @game = current_user.games.build(params)
-          if @game.save 
-            redirect "/games"
-          else 
-            redirect "/games/new"
-          end 
-        else 
-         redirect "/login"
-        end 
+        make_game
       end  
 
       get "/games/:id/edit" do
@@ -84,4 +77,12 @@ class GamesController < ApplicationController
     def set_game
       @game = current_user.games.find_by_id(params[:id])
     end
+
+    def make_game
+      if @game.save 
+        redirect "/games"
+      else 
+        redirect "/games/new"
+      end    
+    end 
 end 
