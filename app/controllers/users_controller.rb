@@ -2,31 +2,24 @@ class UsersController < ApplicationController
 
    
 
-      
-
      get "/signup" do
-      redirect_if_logged_in 
-      erb :'/users/signup'
+        redirect_if_logged_in 
+        erb :'/users/signup'
      end 
 
      post "/signup" do
-      is_it_blank
-      user =User.create(username: params[:username], email: params[:email], password:  params[:password])
-      redirect "/login"
+        is_it_blank
+        user =User.create(params)
+        redirect "/login"
      end 
 
      get "/login" do 
-      if logged_in?
-        redirect "/games"
-      else
-        #flash[:error] = "You are not logged in."
+        redirect_if_logged_in
         erb :"/sessions/login"
-      end
-      
      end 
 
      post "/login" do
-      user = User.find_by(username: params[:username])
+        user = User.find_by(username: params[:username])
 
 		    if user && user.authenticate(params[:password])
 			    session[:user_id] = user.id

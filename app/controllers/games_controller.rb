@@ -1,25 +1,15 @@
 class GamesController < ApplicationController 
     
-    configure do
-        enable :sessions
-        set :session_secret, "secret"
-      end
-
 
       get "/games" do 
         redirect_if_not_logged_in
-        
         @games = current_user.games
         erb :"/games/index"
-
       end 
 
       get "/games/new" do
-
         redirect_if_not_logged_in
-      
         erb :"games/new" 
-
       end 
 
       post "/games" do
@@ -37,8 +27,7 @@ class GamesController < ApplicationController
 
       get "/games/:id/edit" do
         if logged_in?
-          @game = current_user.games.find_by_id(params[:id])
-          #end 
+          set_game
           if @game 
             erb :"games/edit"
           else

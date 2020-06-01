@@ -12,9 +12,7 @@ class ApplicationController < Sinatra::Base
  
 
   get "/" do
-    if logged_in?
-      redirect "/games"
-    end 
+    redirect_if_logged_in 
     erb :home
   end
 
