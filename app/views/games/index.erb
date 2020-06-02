@@ -1,7 +1,8 @@
 <h2>Welcome! Here are your games.</h2>
-<br>
+
 <% @games.each do |g|%>
-<a href="/games/<%=g.id%>" class="no-underline"><%= g.title%></a>
+<br>
+<a href="/games/<%=g.id%>" class="no-underline"><%= g.title%></a><br>
 <% end %>
 <br>
 <br><a href="/games/new"><button class="button">Add</button></a>
